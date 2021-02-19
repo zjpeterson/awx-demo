@@ -1,0 +1,36 @@
+---
+- name: Configure Tower in environment {{ tower_env }}
+  hosts: tower_{{ tower_env }}
+  connection: local
+  gather_facts: no
+
+  vars:
+    tower_hostname: "{{ ansible_host }}"
+
+  vars_prompt:
+    - name: tower_env
+      prompt: Tower environment (dev/prod)
+
+  # this user will need to be able to create SAML tokens!
+    - name: tower_username
+      prompt: Username
+
+    - name: tower_password
+      prompt: Password
+      secret: yes
+
+  tasks:
+    - include_role:
+        name: redhat_cop.tower_configuration.organizations
+
+    - include_role:
+        name: redhat_cop.tower_configuration.projects
+
+    - include_role:
+        name: redhat_cop.tower_configuration.inventories
+
+    - include_role:
+        name: redhat_cop.tower_configuration.hosts
+
+    - include_role:
+        name: redhat_cop.tower_configuration.job_templates

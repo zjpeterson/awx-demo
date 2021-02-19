@@ -1,0 +1,6 @@
+---
+tower_inventories:
+  - name: MSP Inventory
+    organization: MSP Organization
+    variables:
+      ansible_connection: local

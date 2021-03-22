@@ -4,6 +4,9 @@
   connection: local
   gather_facts: no
 
+  collections:
+    - awx.awx
+
   vars:
     tower_hostname: "{{ ansible_host }}"
 
@@ -17,7 +20,7 @@
 
     - name: tower_password
       prompt: Password
-      secret: yes
+      private: yes
 
   tasks:
     - include_role:

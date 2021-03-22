@@ -1,6 +1,6 @@
 ---
-tower_templates:
-  - name: Debug Playbook
+tower_templates_global:
+  - name: Debug Playbook (Global)
     organization: MSP Organization
     project: Ansible Examples
     playbook: "debug.yml"
@@ -16,4 +16,4 @@ tower_templates:
           variable: msg
           min: 0
           max: 1024
-          default: hello
+          default: hello from anywhere

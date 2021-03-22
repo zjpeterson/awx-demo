@@ -1,0 +1,19 @@
+---
+tower_templates_prod:
+  - name: Debug Playbook (Prod)
+    organization: MSP Organization
+    project: Ansible Examples
+    playbook: "debug.yml"
+    inventory: MSP Inventory
+    survey_enabled: yes
+    survey:
+      name: ""
+      description: ""
+      spec:
+        - question_name: Debug message
+          required: yes
+          type: text
+          variable: msg
+          min: 0
+          max: 1024
+          default: hello from Prod

@@ -9,6 +9,9 @@
 
   vars:
     tower_hostname: "{{ ansible_host }}"
+    tower_templates: "{{ tower_templates_global + 
+                         tower_templates_dev | default([]) + 
+                         tower_templates_prod | default([]) }}"
 
   vars_prompt:
     - name: tower_env

@@ -1,0 +1,43 @@
+---
+- name: Configure Controller in environment {{ controller_env }}
+  hosts: controller_{{ controller_env }}
+  connection: local
+  gather_facts: no
+
+  collections:
+    - ansible.controller
+    - redhat_cop.controller_configuration
+
+  vars:
+    controller_hostname: "{{ ansible_host }}"
+    controller_templates: "{{ controller_templates_global +
+                         controller_templates_dev | default([]) +
+                         controller_templates_prod | default([]) }}"
+
+  vars_prompt:
+    - name: controller_env
+      prompt: Tower environment (dev/prod)
+
+  # this user will need to be able to create SAML tokens!
+    - name: controller_username
+      prompt: Username
+
+    - name: controller_password
+      prompt: Password
+      private: yes
+
+  tasks:
+    - include_role:
+        name: redhat_cop.controller_configuration.organizations
+
+    - include_role:
+        name: redhat_cop.controller_configuration.projects
+
+    - include_role:
+        name: redhat_cop.controller_configuration.inventories
+
+    - include_role:
+        name: redhat_cop.controller_configuration.hosts
+
+    - include_role:
+        name: redhat_cop.controller_configuration.job_templates

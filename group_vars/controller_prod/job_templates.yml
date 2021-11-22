@@ -1,5 +1,5 @@
 ---
-tower_templates_prod:
+controller_templates_prod:
   - name: Debug Playbook (Prod)
     organization: MSP Organization
     project: Ansible Examples

@@ -1,0 +1,6 @@
+---
+collections:
+  - name: ansible.controller
+    version: 4.0.0
+  - name: redhat_cop.controller_configuration
+    version: 2.0.0-1

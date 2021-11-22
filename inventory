@@ -1,12 +1,12 @@
-[tower_dev]
-awxdemo-dev.apps.ocp4.lab.msp.redhat.com
+[controller_dev]
+controller-dev.example.com
 
-[tower_prod]
-awxdemo-prod.apps.ocp4.lab.msp.redhat.com
+[controller_prod]
+controller-prod.example.com
 
-[tower:children]
-tower_dev
-tower_prod
+[controller:children]
+controller_dev
+controller_prod
 
-[tower:vars]
-tower_validate_certs=no
+[controller:vars]
+controller_validate_certs=no

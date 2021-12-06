@@ -1,8 +1,8 @@
 [tower_dev]
-awxdemo-dev.apps.ocp4.lab.msp.redhat.com
+tower-dev.example.com
 
 [tower_prod]
-awxdemo-prod.apps.ocp4.lab.msp.redhat.com
+tower-prod.example.com
 
 [tower:children]
 tower_dev
